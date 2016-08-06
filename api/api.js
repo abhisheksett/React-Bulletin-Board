@@ -23,6 +23,29 @@ router.route('/notes')
     }
     return res.json(note);
   })
+})
+.put(function(req, res){
+  console.log(req.body);
+  Notes.findById(req.body.id, function(err, note){
+		if(err){
+			res.send(err);
+		}
+		note.text = req.body.text;
+		note.save(function(err, data){
+			if(err){
+				res.send(err);
+			}
+			res.json(err);
+		});
+	})
+})
+.delete(function(req, res){
+	Notes.remove({_id: req.body.id}, function(err, data){
+		if(err){
+			res.send(err);
+		}
+		res.send("Deleted...");
+	})
 });
 
 module.exports = router;

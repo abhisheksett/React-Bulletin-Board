@@ -120,18 +120,35 @@ var Board = React.createClass({
     updates the value of state note on a particular index
   */
   update: function(text, index){
-    let notesArr = this.state.notes;
-    notesArr[index].note = text;
-    this.setState({notes: notesArr});
+    var self = this;
+    let notesArr = self.state.notes;
+    let notesObj = notesArr[index];
+
+    $.ajax({
+      url: getUrl,
+      type: 'PUT',
+      data: {text: text, id: notesObj.id},
+    }).then(function(data){
+      notesArr[index].note = text;
+      self.setState({notes: notesArr});
+    });
   },
 
 /**
   Removes a note from notes state
 */
   delete: function(index){
+    let self = this;
     let notesArr = this.state.notes;
-    notesArr.splice(index, 1);
-    this.setState({notes: notesArr});
+    let notesObj = notesArr[index];
+    $.ajax({
+      url: getUrl,
+      type: 'DELETE',
+      data: {id: notesObj.id},
+    }).then(function(data){
+      notesArr.splice(index, 1);
+      self.setState({notes: notesArr});
+    });
   },
 
   /**
