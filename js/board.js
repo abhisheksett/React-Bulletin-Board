@@ -1,4 +1,5 @@
 
+var getUrl = 'http://192.168.1.4:3000/api/notes';
 /*
   Creating class Note
 */
@@ -95,6 +96,20 @@ var Board = React.createClass({
     }
   },
 
+  componentWillMount: function(){
+      var self = this;
+      $.ajax({
+        url: getUrl,
+        type: 'GET'
+      }).then(function(data){
+        data.forEach(function(item){
+          if(item.text){
+            self.loadInitialNotes(item);
+          }
+        })
+      });
+  },
+
   getInitialState: function(){
     return {
       notes: []
@@ -122,13 +137,24 @@ var Board = React.createClass({
   /**
     Adds a new note
   */
-  addNote: function(text){
+  loadInitialNotes: function(text){
     let arr = this.state.notes;
     arr.push({
-      id: this.generateNextId(),
-      note: text
+      id: text._id,
+      note: text.text
     });
     this.setState({notes: arr});
+  },
+
+  addNote: function(text){
+    var self = this;
+    $.ajax({
+      url: getUrl,
+      type: 'POST',
+      data: {text: text},
+    }).then(function(data){
+      self.loadInitialNotes(data);
+    });
   },
 
 /**
