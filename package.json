@@ -1,0 +1,27 @@
+{
+  "name": "react-bulletin-board",
+  "version": "1.0.0",
+  "description": "React application with mongo and express",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abhisheksett/React-Bulletin-Board.git"
+  },
+  "author": "Abhishek Sett",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abhisheksett/React-Bulletin-Board/issues"
+  },
+  "homepage": "https://github.com/abhisheksett/React-Bulletin-Board#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "cors": "^2.7.1",
+    "express": "^4.14.0",
+    "mongodb": "^2.2.5",
+    "mongoose": "^4.5.8",
+    "nodemon": "^1.10.0"
+  }
+}
