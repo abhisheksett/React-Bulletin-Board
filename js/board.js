@@ -1,5 +1,6 @@
 
-var getUrl = 'http://192.168.1.4:3000/api/notes';
+
+url = `${url}/api/notes`;
 /*
   Creating class Note
 */
@@ -99,7 +100,7 @@ var Board = React.createClass({
   componentWillMount: function(){
       var self = this;
       $.ajax({
-        url: getUrl,
+        url: url,
         type: 'GET'
       }).then(function(data){
         data.forEach(function(item){
@@ -125,7 +126,7 @@ var Board = React.createClass({
     let notesObj = notesArr[index];
 
     $.ajax({
-      url: getUrl,
+      url: url,
       type: 'PUT',
       data: {text: text, id: notesObj.id},
     }).then(function(data){
@@ -142,7 +143,7 @@ var Board = React.createClass({
     let notesArr = this.state.notes;
     let notesObj = notesArr[index];
     $.ajax({
-      url: getUrl,
+      url: url,
       type: 'DELETE',
       data: {id: notesObj.id},
     }).then(function(data){
@@ -166,7 +167,7 @@ var Board = React.createClass({
   addNote: function(text){
     var self = this;
     $.ajax({
-      url: getUrl,
+      url: url,
       type: 'POST',
       data: {text: text},
     }).then(function(data){
