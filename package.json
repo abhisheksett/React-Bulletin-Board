@@ -4,7 +4,12 @@
   "description": "React application with mongo and express",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "babel js -d built"
+  },
+  "babel": {
+    "preset": [
+      "react"
+    ]
   },
   "repository": {
     "type": "git",
@@ -17,9 +22,13 @@
   },
   "homepage": "https://github.com/abhisheksett/React-Bulletin-Board#readme",
   "dependencies": {
+    "babel-cli": "^6.11.4",
+    "babel-preset-react": "^6.11.1",
     "body-parser": "^1.15.2",
+    "browserify": "^13.1.0",
     "cors": "^2.7.1",
     "express": "^4.14.0",
+    "jquery": "^3.1.0",
     "mongodb": "^2.2.5",
     "mongoose": "^4.5.8",
     "nodemon": "^1.10.0"

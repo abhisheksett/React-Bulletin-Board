@@ -25,7 +25,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cors());
 app.use("/css", express.static(__dirname + '/css'));
-app.use("/js", express.static(__dirname + '/js'))
+app.use("/js", express.static(__dirname + '/js'));
+app.use("/config", express.static(__dirname + '/config'));
 
 app.get('/', (req,res) => {
   res.sendFile(__dirname + '/board.html');
